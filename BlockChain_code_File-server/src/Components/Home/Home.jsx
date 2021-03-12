@@ -42,6 +42,17 @@ const Home =()=>{
 
     // upload function
     const uploadFile = () => {
+        if(file2.length>100){
+            return  M.toast({html:`
+            <div class="file_upload_notification_error">
+                <span class="material-icons">
+                error_outline
+                </span>
+                <span >Cannot upload more then 100!</span>
+            </div>`
+            ,classes:"file_upload_notification"})
+        }
+    
         let load=document.querySelector("#load_fileIn.uploading_file");
         console.log(file,"file1");
         console.log(file2,"file2");

@@ -37,10 +37,10 @@ function getFormattedUrl(req) {
     return {protocol:req.protocol,host:req.host}
 }
 
-app.get("/getnow",(req,res)=>{
-  console.log(getFormattedUrl(req));
-  res.send(getFormattedUrl(req))
-})
+// app.get("/getnow",(req,res)=>{
+//   console.log(getFormattedUrl(req));
+//   res.send(getFormattedUrl(req))
+// })
 
 app.listen(PORT,()=>{
     console.log(`Connected`,PORT);

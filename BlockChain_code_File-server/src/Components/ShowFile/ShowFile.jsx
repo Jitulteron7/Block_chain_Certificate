@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom"
 import url1 from "../../Files/pdf/certificate.pdf"  
 import FileDownload from "js-file-download"
 import "./showFile.css";  
+import M from "materialize-css";
 import axios from "axios"
 const hereIs=`http://game.oyesters.in/EC-353-TCPIP-Mid%20Exam%20March%202021-OPM.pdf`;
 // import a from "../../../../BlockChain_code_File-main/public/Pdfs/"
@@ -19,8 +20,30 @@ export default function Test(params) {
       responseType:"blob",
     })
     .then(res=>{
+      if(res.data.error){
+        return  M.toast({html:`
+        <div class="file_upload_notification_error">
+            <span class="material-icons">
+            error_outline
+            </span>
+            <span >${res.data.message}!</span>
+        </div>`
+        ,classes:"file_upload_notification"})
+      }
       setPdfIs(res.data)
       FileDownload(res.data,`${params.url.replace("/","")}`);
+    })
+    .catch(e=>{
+      if(e){
+      return  M.toast({html:`
+        <div class="file_upload_notification_error">
+            <span class="material-icons">
+            error_outline
+            </span>
+            <span > ${e}!</span>
+        </div>`
+        ,classes:"file_upload_notification"})
+      }
     })
   }
   pdfjs.GlobalWorkerOptions.workerSrc =  

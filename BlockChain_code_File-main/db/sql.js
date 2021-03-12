@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 
 const db = new sequelize(
-    "block_chain",
+    "test_7",
     "admin",
     "admin1234",
   {

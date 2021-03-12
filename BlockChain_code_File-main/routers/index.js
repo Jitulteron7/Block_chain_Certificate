@@ -5,13 +5,14 @@ const Certificate=require("../models/index")
 const randomString=require("randomstring");
 const sha256=require("js-sha256");
 const Email  =require("../models/email");
+
 //---------------------------------------
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const factory = require('../Ethereum/certificate') ;
 const moment=require("moment")
 const provider = new HDWalletProvider(
-    'frame apart post kick armed refuse limb armed annual jaguar apart cliff' ,
+    'frame apart post kick armed refuse limb armed annual jaguar apart cliff',
     'https://rinkeby.infura.io/v3/1ec6558c6dba4a9db1ab5f5b647d9a60'
     );
     
@@ -34,7 +35,7 @@ const createDate= async()=>{
     }
   
   }
-//   createDate()
+  createDate()
 
 
 
@@ -657,7 +658,7 @@ router.post("/tutor/upload/file",async(req,res)=>{
 
 // route to get the saved files 
 router.get("/data/:string",async (req,res)=>{
-    createDate()
+    
 try{
     
    let string=req.params.string;
@@ -703,26 +704,21 @@ try{
     const result =await Certificate.findOne({
     where: {certificate_hash:string}
     });
-    const resultEmail=await Email.findOne({
-        where: {send_date:todayIs}
-    });
-    // console.log(resultEmail,"result");
-    if(resultEmail!=null||resultEmail!=[]){
-        let newView=resultEmail.view_count+1
-        console.log(newView);
-        const Email_Modify=await Email.update(
-            {
-                view_count:newView
-            },{returning: true,
-                where:{send_date:todayIs}
-            })
-        // )
-        console.log(Email_Modify,"updated view");
-    }
     
-console.log("WE got it ");
+    
+// console.log("WE got it ");
     //  res.
-     res.download(`${__dirname}/../public/Pdfs/${result.certificate_location}`)
+
+    if(result){
+        res.download(`${__dirname}/../public/Pdfs/${result.certificate_location}`)
+    }
+    else{
+        return res.status(200).json({
+            error:true,
+            message:"File does not exits!"
+        })
+    }
+     
 
 
 }
