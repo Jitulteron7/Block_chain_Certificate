@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const {db}=require("../db/sql");
 const moment =require("moment");
-const Email = db.define('user_table', {
+const User = db.define('user_table', {
   id: {
     type: DataTypes.INTEGER(255),
     allowNull: false,
@@ -32,4 +32,4 @@ const Email = db.define('user_table', {
 
   db.sync()
 
-module.exports = Email;
+module.exports = User;

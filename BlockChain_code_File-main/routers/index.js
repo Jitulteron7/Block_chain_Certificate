@@ -5,7 +5,7 @@ const Certificate=require("../models/index")
 const randomString=require("randomstring");
 const sha256=require("js-sha256");
 const Email  =require("../models/email");
-
+const User =require("../models/user");
 //---------------------------------------
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
@@ -19,6 +19,7 @@ const provider = new HDWalletProvider(
 let todayIs=moment().format("YYYY-MM-DD")
     
 const createDate= async()=>{
+    const user=await User.findAll({});
     console.log(todayIs);
     try{
         const date=await Email.findOne({
@@ -37,7 +38,7 @@ const createDate= async()=>{
   }
   createDate()
 
-
+  
 
     const web3 = new Web3(provider);
     // blockchain deploy for multiple pdfs 
