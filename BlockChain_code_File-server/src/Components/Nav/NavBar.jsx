@@ -7,7 +7,7 @@ const Nav =()=>{
     <nav style={{backgroundColor:"#fff",color:"#AACC00"}}>
 <div class="nav-wrapper">
   <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li className="logo_align"><Link to="/upload/home" class=" logo_pic"><img src={logo} /></Link></li>      
+        <li className="logo_align"><Link  class=" logo_pic"><img src={logo} /></Link></li>      
         {/* <li><Link to="/">Multiple Certificate</Link></li>
         <li><Link to="/page3">One Certificate</Link></li> */}
   </ul>
