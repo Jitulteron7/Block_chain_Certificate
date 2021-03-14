@@ -1,9 +1,9 @@
 const sequelize = require('sequelize');
 
 const db = new sequelize(
-    "test_7",
-    "admin",
-    "admin1234",
+    "block_chain",
+    "root",
+    "password",
   {
     dialect: 'mysql',
     host: "localhost",
