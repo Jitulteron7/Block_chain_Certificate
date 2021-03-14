@@ -16,8 +16,6 @@ const Home =()=>{
     const [batch_duration,set_batch_start_date]=useState("");
     const [training_title,set_training_title]=useState("");
     const [staff_name,set_stuff_name]=useState("");
-    const [staff_no,set_stuff_no]=useState();
-    const [certificate_name,set_certificate_name]=useState("");
     const [staff_email,set_staff_email]=useState("");
     const [training_code,set_training_code]=useState();
     const [load,setLoad]=useState(true)
@@ -35,10 +33,21 @@ const Home =()=>{
     
     const uploadFile = () => {
         
-        // if(){
-        //     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        //     return re.test(String(email).toLowerCase());
-        // }
+        
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+           var  validation =re.test(String(staff_email).toLowerCase());
+           console.log(validation);
+           if(!validation){
+                return M.toast({html:`
+                <div class="file_upload_notification_error">
+                    <span class="material-icons">
+                    error_outline
+                    </span>
+                    <span >Email is not valid !</span>
+                </div>`
+                ,classes:"file_upload_notification"})       
+           }
+        
        if(!staff_email||!file||!batch_trainer||!training_title||!staff_name||!batch_duration){
         M.toast({html:`
         <div class="file_upload_notification_error">
@@ -49,7 +58,7 @@ const Home =()=>{
         </div>`
         ,classes:"file_upload_notification"})
        }else{
-        
+
         let load=document.querySelector("#load_fileIn.uploading_file");
         load.style.display="block"
         load.style.height="115%"
@@ -110,6 +119,14 @@ const Home =()=>{
                             <span >Pushed certificate to Blockchain Successfully</span>
                         </div>`
                         ,classes:"file_upload_notification"})
+                        setFile("")
+                        set_batch_code("")
+                        set_batch_trainer("")
+                        set_batch_start_date("")
+                        set_training_title("")
+                        set_stuff_name("")
+                        set_staff_email("")
+                        window.location.reload();
           }else{
            M.toast({html:`
            <div class="file_upload_notification_error">

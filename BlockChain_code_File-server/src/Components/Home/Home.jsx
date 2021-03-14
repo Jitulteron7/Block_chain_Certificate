@@ -100,9 +100,20 @@ const Home =()=>{
                             <span >Pushed certificates to Blockchain Successfully</span>
                         </div>`
                         ,classes:"file_upload_notification"})
+
+                    // excel
+                     setFile("")
+                    // pdf
+                     setFile2("")
+
+                    // no of of certificates
+                    set_NoIs("")
+
+
                 getFile({ name: res.data.name,
                      path: 'http://localhost:5000' + res.data.path
                    })
+                window.location.reload();
             }
             else if (res.data.error){
                 load.style.display="none"

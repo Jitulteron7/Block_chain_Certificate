@@ -15,7 +15,20 @@ const provider = new HDWalletProvider(
     'frame apart post kick armed refuse limb armed annual jaguar apart cliff',
     'https://rinkeby.infura.io/v3/1ec6558c6dba4a9db1ab5f5b647d9a60'
     );
-    
+//-----------------------------------------
+// email
+const nodemailer=require("nodemailer");
+const sendgridTransport=require("nodemailer-sendgrid-transport");
+const transporter=nodemailer.createTransport({
+    host: "mail.oyesters.in",
+    port: 465,
+    secure: true,
+    auth: {
+    user: "oyesters_training@oyesters.in",
+    pass: "Oyesters@1234"
+    }
+})
+//-----------------------------------------
 let todayIs=moment().format("YYYY-MM-DD")
     
 const createDate= async()=>{
@@ -75,6 +88,29 @@ const createDate= async()=>{
                }
 
                    gotHere= await Certificate.create(get);
+                //    email section
+                var mailOptions = {
+                    from: '"Example Team" <oyesters_training@oyesters.in>',
+                    to:data[`Staff_Email`],
+                    subject: 'Test Email',
+                    html:`<p>
+                        Dear student,</p>
+                        <p>Your Certificate Link is created. Click <a href=${get.certificate_link}>Here</a></p>`,  
+                    dsn: {
+                        id: 'some random message specific id',
+                        return: 'headers',
+                        notify: ['failure', 'delay'],
+                        recipient: 'oyesters_training@oyesters.in'
+                    },
+                }; 
+                   transporter.sendMail(mailOptions,(err,info)=>{
+                       if(err){
+                           console.log("somthing went wrong will sending email",err);
+                           return next(err);
+                       }else{
+                        console.log('Successfully sent');
+                       }
+                   })
                    const resultEmail=await Email.findOne({
                             where: {send_date:todayIs}
                         });
@@ -324,7 +360,7 @@ const createDate= async()=>{
     
 // blockchain deploy for single pdfs 
       const deploy2 = async (filehash,data,res,req) => {
-
+        console.log(data.certificate_link);
         try{
             const accounts = await web3.eth.getAccounts();
             console.log('account address ', accounts[0]);
@@ -345,7 +381,36 @@ const createDate= async()=>{
                      ...data,
                      transaction_hash:hash
                  }
-                 await    Certificate.create(get)
+                 const done= await    Certificate.create(get)
+                 if(done){
+                     console.log(data.staff_email);
+                     var mailOptions = {
+                                from: '"Example Team" <oyesters_training@oyesters.in>',
+                                to:data.staff_email,
+                                subject: 'Test Email',
+                                html:`<p>
+                                    Dear student,</p>
+                                    <p>Your Certificate Link is created. Click <a href=${data.certificate_link}>Here</a></p>`,  
+                                dsn: {
+                                    id: 'some random message specific id',
+                                    return: 'headers',
+                                    notify: ['failure', 'delay'],
+                                    recipient: 'oyesters_training@oyesters.in'
+                                },
+                            }; 
+                      transporter.sendMail(mailOptions,(err,info)=>{
+                        if(err){
+                            console.log("The error is ",err);
+                        }else{
+                            // console.log(nodemailer.getTestMessageUrl(info));
+                            // console.log(info);
+                            console.log('Successfully sent');
+                        }
+                    })
+                    // console.log(sent_mail,"Jitul Teron");
+                    
+                 }
+                 
                  
             //--------------------------
         
@@ -355,7 +420,7 @@ const createDate= async()=>{
         console.log(hh);
 
         } catch(e){
-            console.log(e);
+            console.log(e),"Jitul Teron";
         }
       };
 
