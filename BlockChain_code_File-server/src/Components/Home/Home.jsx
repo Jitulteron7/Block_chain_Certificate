@@ -217,7 +217,6 @@ const Home =()=>{
         </div>
     </div>
 
-    {/* http://35.154.79.72/BlockChainProj/front-end/dashboard.php */}
         <div className="go_back">
                <a href={`${window.location.protocol}//${window.location.hostname}/BlockChainProj/front-end/dashboard.php`}>
                
