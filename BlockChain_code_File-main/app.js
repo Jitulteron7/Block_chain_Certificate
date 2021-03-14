@@ -57,6 +57,16 @@ const createDate= async()=>{
             const makeDate=await Email.create({
                 send_Date:todayIs
             })
+            if(makeDate){
+              app.listen(PORT,()=>{
+                console.log(`Connected`,PORT);
+            })
+            }
+            console.log(makeDate,"Date he onfsdnkfjsndfjn ;lknsd;lfna k asdfjsn k");
+        }else{
+          app.listen(PORT,()=>{
+            console.log(`Connected`,PORT);
+        })
         }     
   }
   catch(e){
@@ -66,6 +76,3 @@ const createDate= async()=>{
 }
 createDate()
 
-app.listen(PORT,()=>{
-    console.log(`Connected`,PORT);
-})
