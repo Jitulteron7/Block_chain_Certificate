@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express=require("express");
 const app=express();
 const path=require("path");
@@ -58,16 +59,18 @@ const createDate= async()=>{
                 send_Date:todayIs
             })
             if(makeDate){
-              app.listen(PORT,()=>{
+
+               app.listen(PORT,()=>{
                 console.log(`Connected`,PORT);
-            })
+              })
             }
             console.log(makeDate,"Date he onfsdnkfjsndfjn ;lknsd;lfna k asdfjsn k");
         }else{
-          app.listen(PORT,()=>{
-            console.log(`Connected`,PORT);
-        })
-        }     
+
+           app.listen(PORT,()=>{
+             console.log(`Connected`,PORT);
+          })
+      }     
   }
   catch(e){
       console.log(e);
