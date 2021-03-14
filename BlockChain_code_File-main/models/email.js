@@ -31,6 +31,31 @@ const Email = db.define('email_table', {
   },
 });
 
-  db.sync()
 
+  db.sync()
+  let todayIs=moment().format("YYYY-MM-DD")
+  const createDate= async()=>{
+    
+    console.log(todayIs);
+    try{
+        const date=await Email.findOne({
+            where:{send_date:todayIs}
+          })
+          console.log("data email is what sdf ",date);
+          if(date==null){
+              const makeDate=await Email.create({
+                  send_Date:todayIs
+              })
+              
+          }else{
+  
+            console.log("Email not null");
+         }     
+    }
+    catch(e){
+        console.log(e);
+    }
+  
+  }
+  createDate()
 module.exports = Email;

@@ -24,10 +24,13 @@ const User = db.define('user_table', {
     type: DataTypes.STRING(255),
     allowNull: false,
   },
-  created_at: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },	
+  user_type:{
+    type: DataTypes.INTEGER,
+    allowNull:false,
+    defaultValue:0
+  }	
+},{
+  timestamps: false,
 });
 
   db.sync()

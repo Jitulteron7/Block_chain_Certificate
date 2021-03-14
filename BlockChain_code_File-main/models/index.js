@@ -60,9 +60,6 @@ const Certificates = db.define('certificate', {
   
     allowNull:false,
   },
-
-
-  
 });
 
   db.sync()

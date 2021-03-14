@@ -46,36 +46,38 @@ function getFormattedUrl(req) {
 // })
 
 
-let todayIs=moment().format("YYYY-MM-DD")
-const createDate= async()=>{
+// let todayIs=moment().format("YYYY-MM-DD")
+// const createDate= async()=>{
   
-  console.log(todayIs);
-  try{
-      const date=await Email.findOne({
-          where:{send_date:todayIs}
-        })
-        if(date==null){
-            const makeDate=await Email.create({
-                send_Date:todayIs
-            })
-            if(makeDate){
+//   console.log(todayIs);
+//   try{
+//       const date=await Email.findOne({
+//           where:{send_date:todayIs}
+//         })
+//         console.log("data email is what sdf ",date);
+//         if(date==null){
+//             const makeDate=await Email.create({
+//                 send_Date:todayIs
+//             })
+//             if(makeDate){
 
-               app.listen(PORT,()=>{
-                console.log(`Connected`,PORT);
-              })
-            }
-            console.log(makeDate,"Date he onfsdnkfjsndfjn ;lknsd;lfna k asdfjsn k");
-        }else{
+//                app.listen(PORT,()=>{
+//                 console.log(`Connected`,PORT);
+//               })
+//             }
+//             console.log("Date he onfsdnkfjsndfjn ;lknsd;lfna k asdfjsn k");
+//         }else{
 
-           app.listen(PORT,()=>{
-             console.log(`Connected`,PORT);
-          })
-      }     
-  }
-  catch(e){
-      console.log(e);
-  }
+           
+//       }     
+//   }
+//   catch(e){
+//       console.log(e);
+//   }
 
-}
-createDate()
+// }
+// createDate()
 
+app.listen(PORT,()=>{
+  console.log(`Connected`,PORT);
+});
