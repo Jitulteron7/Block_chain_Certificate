@@ -167,12 +167,12 @@ const Home =()=>{
         </div>
     </div>
     <div className="go_back">
-                {/* <Link to={`${window.location.protocol}//${window.location.hostname}/BlockChainProj/front-end/dashboard.php`}> */}
-                <Link to={`/BlockChainProj/front-end/dashboard.php`}>
+                <a href={`${window.location.protocol}//${window.location.hostname}/BlockChainProj/front-end/dashboard.php`}>
+                
                 <button className="btn">
                     <span class="Small material-icons">arrow_back</span>
                         back
-                </button></Link>
+                </button></a>
         </div>
     <div className="Page3">
         <div className="File row">

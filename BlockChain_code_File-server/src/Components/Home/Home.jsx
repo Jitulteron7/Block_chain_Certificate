@@ -219,14 +219,14 @@ const Home =()=>{
 
     {/* http://35.154.79.72/BlockChainProj/front-end/dashboard.php */}
         <div className="go_back">
-               {/* <Link to={`${window.location.protocol}//${window.location.hostname}/BlockChainProj/front-end/dashboard.php`}> */}
-               <Link to={`/BlockChainProj/front-end/dashboard.php`}>
+               <a href={`${window.location.protocol}//${window.location.hostname}/BlockChainProj/front-end/dashboard.php`}>
+               
                <button className="btn">
                     <span class="Small material-icons">arrow_back</span>
                         back
                       
                 </button>
-               </Link>
+               </a>
         </div>
     <div className="Home">
 
