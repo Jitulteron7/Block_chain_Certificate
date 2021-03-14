@@ -5,7 +5,7 @@ import axiosInstance from "../../helper/AxiosInstance";
 import axios from "axios";
 import M from "materialize-css"
 import moment from "moment";
-
+import {Link} from "react-router-dom";
 
 
 
@@ -217,7 +217,21 @@ const Home =()=>{
         </div>
     </div>
 
+    {/* http://35.154.79.72/BlockChainProj/front-end/dashboard.php */}
+        <div className="go_back">
+               {/* <Link to={`${window.location.protocol}//${window.location.hostname}/BlockChainProj/front-end/dashboard.php`}> */}
+               <Link to={`/BlockChainProj/front-end/dashboard.php`}>
+               <button className="btn">
+                    <span class="Small material-icons">arrow_back</span>
+                        back
+                      
+                </button>
+               </Link>
+        </div>
     <div className="Home">
+
+        
+
         <div className="File">
             <div className="body">
                 {/* <img src={img} /> */}
@@ -257,6 +271,7 @@ const Home =()=>{
                         <input onChange={(e)=>{set_NoIs(e.target.value)}} id="NoIs" type="number" class="validate" />
                         <label for="NoIs">Enter no of Certificates</label>
                 </div>       
+                
             </div>
             
             <div className="bottom">

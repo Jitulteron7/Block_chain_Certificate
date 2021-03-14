@@ -92,3 +92,14 @@
     border-bottom: 1px solid #AACC00;
     box-shadow: 0 1px 0 0 #AACC00;
   }
+  
+  .go_back button {
+      width: 100px;
+      margin-top:1%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-left: 1%;
+      background-color: #AACC00;
+      border-radius:50px;
+  }
