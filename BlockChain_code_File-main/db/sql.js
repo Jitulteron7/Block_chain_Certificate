@@ -1,12 +1,12 @@
 const sequelize = require('sequelize');
 
 const db = new sequelize(
-    process.env.db_schema,
-    process.env.db_admin,
-    process.env.db_pass,
+    "test_7",
+    "admin",
+    "admin1234",
   {
     dialect: 'mysql',
-    host: process.env.db_host,
+    host: "oyesters-db-1.clcmspyxrtn3.ap-south-1.rds.amazonaws.com",
     pool: {
       max: 100,
       min: 0,

@@ -20,12 +20,12 @@ const provider = new HDWalletProvider(
 const nodemailer=require("nodemailer");
 const sendgridTransport=require("nodemailer-sendgrid-transport");
 const transporter=nodemailer.createTransport({
-    host: process.env.email_host,
-    port: process.env.email_port,
+    host: "mail.oyesters.in",
+    port: 465,
     secure: true,
     auth: {
-    user: process.env.email_user,
-    pass: process.env.email_pass
+    user: "oyesters_training@oyesters.in",
+    pass: "Oyesters@1234"
     }
 })
 //-----------------------------------------
@@ -90,7 +90,7 @@ let todayIs=moment().format("YYYY-MM-DD")
                    gotHere= await Certificate.create(get);
                 //    email section
                 var mailOptions = {
-                    from:process.env.from_email,
+                    from: '"Example Team" <oyesters_training@oyesters.in>',
                     to:data[`Staff_Email`],
                     subject: 'Test Email',
                     html:`<p>
@@ -100,7 +100,7 @@ let todayIs=moment().format("YYYY-MM-DD")
                         id: 'some random message specific id',
                         return: 'headers',
                         notify: ['failure', 'delay'],
-                        recipient:process.env.email_recipient 
+                        recipient: 'oyesters_training@oyesters.in'
                     },
                 }; 
                    transporter.sendMail(mailOptions,(err,info)=>{
@@ -395,7 +395,7 @@ let todayIs=moment().format("YYYY-MM-DD")
                                     id: 'some random message specific id',
                                     return: 'headers',
                                     notify: ['failure', 'delay'],
-                                    recipient: process.env.email_recipient
+                                    recipient: 'oyesters_training@oyesters.in'
                                 },
                             }; 
                       transporter.sendMail(mailOptions,(err,info)=>{
