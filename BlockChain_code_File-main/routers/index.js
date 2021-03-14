@@ -31,25 +31,25 @@ const transporter=nodemailer.createTransport({
 //-----------------------------------------
 let todayIs=moment().format("YYYY-MM-DD")
     
-const createDate= async()=>{
-    const user=await User.findAll({});
-    console.log(todayIs);
-    try{
-        const date=await Email.findOne({
-            where:{send_date:todayIs}
-          })
-          if(date==null){
-              const makeDate=await Email.create({
-                  send_Date:todayIs
-              })
-          }     
-    }
-    catch(e){
-        console.log(e);
-    }
+// const createDate= async()=>{
+//     const user=await User.findAll({});
+//     console.log(todayIs);
+//     try{
+//         const date=await Email.findOne({
+//             where:{send_date:todayIs}
+//           })
+//           if(date==null){
+//               const makeDate=await Email.create({
+//                   send_Date:todayIs
+//               })
+//           }     
+//     }
+//     catch(e){
+//         console.log(e);
+//     }
   
-  }
-  createDate()
+//   }
+//   createDate()
 
   
 
