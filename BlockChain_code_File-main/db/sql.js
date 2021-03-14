@@ -6,7 +6,7 @@ const db = new sequelize(
     "admin1234",
   {
     dialect: 'mysql',
-    host: "oyesters-db-1.clcmspyxrtn3.ap-south-1.rds.amazonaws.com",
+    host: "localhost",
     pool: {
       max: 100,
       min: 0,
