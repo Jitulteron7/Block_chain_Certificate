@@ -200,7 +200,7 @@ const Home =()=>{
             ,classes:"file_upload_notification"})
             
         }
-    return(<>
+    return(<div className="here_img">
      <div id="load_fileIn" className="uploading_file">
         <div className="loading">
         <div class="preloader-wrapper big active">
@@ -253,8 +253,8 @@ const Home =()=>{
                 </form>
                 <form action="#">
                     <div class="file-field input-field">
-                    <div class="btn " style={{backgroundColor:"#00b0ff",fontSize:"1.2rem",borderRadius:"40px",width:"100%",fontWeight:"bold"}}>
-                    <div className="inner_btn">
+                    <div class="btn " style={{backgroundColor:"#00b0ff",fontSize:"1.2rem",borderRadius:"40px",width:"100%",fontWeight:"bold",backgroundColor:"#f54f26"}}>
+                    <div className="inner_btn ">
                             <span class="Small material-icons">picture_as_pdf</span>
                             <span>Pdf</span>
                     </div>
@@ -266,9 +266,9 @@ const Home =()=>{
                     </div>
                     </div>
                 </form>
-                <div class="input-field col s6">
-                        <input onChange={(e)=>{set_NoIs(e.target.value)}} id="NoIs" type="number" class="validate" />
-                        <label for="NoIs">Enter no of Certificates</label>
+                <div class="input-field col s6 input_num">
+                        <input onChange={(e)=>{set_NoIs(e.target.value)}} id="NoIs" type="number" class="validate" placeholder="Enter no of Certificates"/>
+                        {/* <label for="NoIs">Enter no of Certificates</label> */}
                 </div>       
                 
             </div>
@@ -283,9 +283,9 @@ const Home =()=>{
             </div>
         </div>
         
-        <center> <button onClick={()=>{uploadFile()/*dummy()*/}} class="waves-effect waves-light btn"><span class="Small material-icons">upload</span><span>UPLOAD</span></button></center>
+        <center> <button onClick={()=>{uploadFile()/*dummy()*/}} class="down_upload waves-effect waves-light btn"><span class="Small material-icons">upload</span><span>UPLOAD</span></button></center>
     </div>
-    </>);
+    </div>);
 
 
 }

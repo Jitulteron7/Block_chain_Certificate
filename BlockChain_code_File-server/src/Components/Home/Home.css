@@ -1,10 +1,12 @@
 .Home {
     width: 60%;
     margin: 5% auto;
-    
+    background-image: url("../../img/learn-blockchain.png");
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 .Home .File .body{
-    background-color:#fff;
+    /* background-color:#fff; */
     box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -webkit-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
@@ -54,7 +56,7 @@
     align-items: center;
     justify-content: center;
     height:15px;
-    border-radius:50px;
+    /* border-radius:50px; */
     background-color:#acdef5;
 }
 
@@ -67,14 +69,20 @@
     display: flex;
     justify-content:center;
     align-items: center;
+    
 }
 .Home .inner_btn span{
     margin: 0 6px;
 }
 
+.Home .input-field input{
+    background-color: #fff !important;
+    margin-right: 4px !important;
+}
 
 .input-field input[type=number]:focus + label {
     color: #AACC00;
+
   }
   /* label underline focus color */
    .input-field input[type=number]:focus {
@@ -82,6 +90,8 @@
     box-shadow: 0 1px 0 0 #AACC00;
   }
 
+
+  
 
    .input-field input[type=number]:focus {
     border-bottom: 1px solid #AACC00;
@@ -101,5 +111,29 @@
       align-items:center;
       margin-left: 1%;
       background-color: #AACC00;
-      border-radius:50px;
+      border-radius:15px;
+  }
+  
+  .Home .file-field .file-path-wrapper{
+      margin-top:5px !important;
+      padding-left:1px
+  }
+   .Home .File input{
+      margin-top:10px !important;
+      text-align: center !important;
+      border-radius: 50px !important;
+  }
+  
+  .Home .File input::-webkit-input-placeholder {
+      color:#AACC00;
+      text-align: center;
+  }
+
+
+  .input_num{
+      width:30%;
+  }
+  .down_upload{
+      position: relative;
+      top: -20px;
   }

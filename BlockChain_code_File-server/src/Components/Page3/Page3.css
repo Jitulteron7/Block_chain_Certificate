@@ -4,6 +4,7 @@
     
 }
 .Page3 .File .body{
+    background-color:#fff;
     box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -webkit-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
@@ -128,32 +129,52 @@
   border-color: #AACC00;
 }
   /* number */
-
-    .input-field input[type=number]:focus + label {
+  .Page3  .input-field input[type=number]:focus + label {
     color: #AACC00;
   }
   /* label underline focus color */
-   .input-field input[type=number]:focus {
-    border-bottom: 1px solid #AACC00;
-    box-shadow: 0 1px 0 0 #AACC00;
-  }
-
-
-   .input-field input[type=number]:focus {
+  .Page3 .input-field input[type=number]:focus {
     border-bottom: 1px solid #AACC00;
     box-shadow: 0 1px 0 0 #AACC00;
   }
   /* valid color */
-    .input-field input[type=number].valid {
+  .Page3  .input-field input[type=number].valid {
     border-bottom: 1px solid #AACC00;
     box-shadow: 0 1px 0 0 #AACC00;
   }
   /* invalid color */
-    .input-field input[type=number].invalid {
+  .Page3  .input-field input[type=number].invalid {
     border-bottom: 1px solid rgb(208, 87, 87);
     box-shadow: 0 1px 0 0 rgb(208, 87, 87);
   }
-
+  /* icon prefix focus color */
+  .Page3  .input-field .prefix.active {
+    color: #000;
+  }
+  
+/* email */
+.Page3  .input-field input[type=email]:focus + label {
+  color: #AACC00;
+}
+/* label underline focus color */
+.Page3 .input-field input[type=email]:focus {
+  border-bottom: 1px solid #AACC00;
+  box-shadow: 0 1px 0 0 #AACC00;
+}
+/* valid color */
+.Page3  .input-field input[type=email].valid {
+  border-bottom: 1px solid #AACC00;
+  box-shadow: 0 1px 0 0 #AACC00;
+}
+/* invalid color */
+.Page3  .input-field input[type=email].invalid {
+  border-bottom: 1px solid rgb(208, 87, 87);
+  box-shadow: 0 1px 0 0 rgb(208, 87, 87);
+}
+/* icon prefix focus color */
+.Page3  .input-field .prefix.active {
+  color: #000;
+}
 
 
   /* date */
@@ -181,7 +202,7 @@
     border-bottom: 1px solid rgb(208, 87, 87);
     box-shadow: 0 1px 0 0 rgb(208, 87, 87);
   }
-
+  
   @media screen and (max-width:800px){
    .Page3 {
       width: 65%;
