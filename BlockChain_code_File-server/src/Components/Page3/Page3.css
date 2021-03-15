@@ -11,7 +11,7 @@
     /* box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -webkit-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29); */
-    height: 580px;
+    height: 480px;
     
     padding: 10px;
     padding-top:20px;
@@ -23,6 +23,7 @@
 }
 .form_row{
   width:90% ;
+  margin-bottom: 0px;
 }
 .row_head{
   position: relative;
@@ -37,8 +38,8 @@
 .Page3 .File .bottom .btn{
     background-color:rgb(245, 79, 38) ;
     font-size:1.2rem;
-    border-radius:15px;
-    width: 100px;
+    width: 40%;
+    border-radius: 50px;
 }
 .Page3 button{
     background-color:#AACC00 ;
@@ -119,14 +120,23 @@
   top: -20px;
 }
 .Page3 .file-field .file-path-wrapper{
-  margin-top:5px !important;
+  margin-top:10px !important;
   margin-left:10px;
   border-radius: 50px;
   background-color: #fff;
-  width: 80%;
+  width: 40%;
   
-  padding: 0;
 }
+.Page3 .file-field .file-path-wrapper input{
+  padding: 0 !important;
+}
+.upload_pdf_div{
+  display: flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  flex-direction: column !important;
+}
+
 .Page3 .file-field .file-path-wrapper input {
   border-bottom: 0px !important;
 }

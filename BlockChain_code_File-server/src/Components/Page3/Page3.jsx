@@ -234,15 +234,19 @@ const Home =()=>{
             </div>
             <div className="bottom col l12">
                 <form action="#">
-                    <div class="file-field input-field page3_upload">
-                    <div class="btn " >
-                        <span>Pdf</span>
-                        
-                        <input accept="application/pdf" type="file" name="multiplefile" ref={sl} onChange={handleChange}  />
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files"/>
-                    </div>
+                    <div class="file-field input-field page3_upload upload_pdf_div">
+                        <div class="btn " >
+                            <div className="inner_btn ">
+                                    <span class="Small material-icons">picture_as_pdf</span>
+                                    <span>Pdf</span>
+                            </div>
+                            
+                            <input accept="application/pdf" type="file" name="multiplefile" ref={sl} onChange={handleChange}  />
+                            
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload one or more files"/>
+                        </div>
                     </div>
                 </form>
                 {/* <div className="progessBar" style={{ width: progress }}>
