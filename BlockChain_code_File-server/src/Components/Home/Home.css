@@ -7,9 +7,9 @@
 }
 .Home .File .body{
     /* background-color:#fff; */
-    box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
+    /* box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -webkit-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
-    -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
+    -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29); */
     height: 420px;
     padding: 30px;
     display: flex;
@@ -137,3 +137,40 @@
       position: relative;
       top: -20px;
   }
+
+
+  /* responsive */
+
+  @media screen and (max-width:1150px){
+      .input_num{
+          width:48%
+      }
+  }
+  @media screen and (max-width:890px){
+        .input_num{
+            width:60%
+        }
+    
+    }
+    @media screen and (max-width:720px){
+        .input_num{
+            width:100% !important
+        }
+    
+    }
+    @media screen and (max-width:600px){
+        
+        .Home {
+            width: 80% !important;
+        }
+        .Home .down_upload{
+            position: relative;
+            top: -10px;
+        }
+    }
+    @media screen and (max-width:400px){
+        
+        .Home {
+            width: 90% !important;
+        }
+    }

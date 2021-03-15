@@ -176,7 +176,7 @@ const Home =()=>{
         </div>
     <div className="Page3">
         <div className="File row">
-            <div className=" col l12">
+            <div className=" col l12 s12">
             <div className="body ">
                 
                 <div class="row form_row">
@@ -187,33 +187,33 @@ const Home =()=>{
                     <form class="col s12">
                     
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 m6 s12">
                         
                         <input onChange={(e)=>{set_batch_code(e.target.value)}}  id="Batch_Code" type="number" class="validate" placeholder="Batch Code" />
                         {/* <label for="Batch_Code">Batch Code</label> */}
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 m6 s12">
                         <input onChange={(e)=>{set_stuff_name(e.target.value)}} id="Stuff_Name" type="text" class="validate"  placeholder="Staff Name"/>
                         {/* <label for="Stuff_Name">Staff Name</label> */}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 m6 s12">
                         <input onChange={(e)=>{set_training_title(e.target.value)}} id="Training_Title" type="text" class="validate" placeholder="Training Title" />
                         {/* <label for="Training_Title">Training Title</label> */}
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 m6 s12">
                         <input onChange={(e)=>{set_batch_trainer(e.target.value)}} id="Batch_Trainer" type="text" class="validate" placeholder="Batch Trainer" />
                         {/* <label for="Batch_Trainer">Batch Trainer</label> */}
                         </div>
                     </div>
                     <div class="row">
                         
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 m6 s12">
                         <input onChange={(e)=>{set_staff_email(e.target.value)}} id="staff_email" type="email" class="validate" placeholder="Staff Email" />
                         {/* <label for="staff_email">Staff Email</label> */}
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col l6 m6 s12">
                         <input  onChange={(e)=>{set_batch_start_date(e.target.value)}} id="Batch_Start_Date" type="text" class="validate" placeholder="Batch Duration Date" />
                         {/* <label for="Batch_Start_Date">Batch Duration Date</label> */}
                         </div>
@@ -232,7 +232,7 @@ const Home =()=>{
                   </div>
                 
             </div>
-            <div className="bottom col l12">
+            <div className="bottom col l12 s12">
                 <form action="#">
                     <div class="file-field input-field page3_upload upload_pdf_div">
                         <div class="btn " >
