@@ -1,5 +1,5 @@
 .Page3 {
-    width: 48%;
+    width: 55%;
     margin: 3% auto;
     background-image: url("../../img/learn-blockchain.png");
     background-repeat: no-repeat;
@@ -8,10 +8,11 @@
 }
 .Page3 .File .body{
     /* background-color:#fff; */
-    box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
+    /* box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
     -webkit-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
-    -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29);
-    height: 650px;
+    -moz-box-shadow: -5px -1px 58px -17px rgba(0,0,0,0.29); */
+    height: 580px;
+    
     padding: 10px;
     padding-top:20px;
     display: flex;
@@ -113,7 +114,10 @@
   display:none;
 
 }
-
+.Page3 .down_upload{
+  position: relative;
+  top: -20px;
+}
 .Page3 .file-field .file-path-wrapper{
   margin-top:5px !important;
   margin-left:10px;
