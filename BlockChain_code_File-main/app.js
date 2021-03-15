@@ -8,7 +8,7 @@ const PORT=process.env.PORT||5000;
 const morgan = require('morgan');
 const moment =require("moment");
 const Email =require("./models/email");
-
+const {db}=require("./db/sql");
 app.use(morgan('dev'));
 const os =require("os");
 require("./db/sql");
@@ -77,7 +77,40 @@ function getFormattedUrl(req) {
 
 // }
 // createDate()
+db.authenticate()
+  .then(() => {
+    
+    console.log('database connected successfully');
 
+     let todayIs=moment().format("YYYY-MM-DD")
+  const createDate= async()=>{
+    
+   
+    try{
+        const date=await Email.findOne({
+            where:{send_date:todayIs}
+          })
+          console.log("data email is what sdf ",date);
+          if(date==null){
+              const makeDate=await Email.create({
+                  send_Date:todayIs
+              })
+              
+          }else{
+  
+            console.log("Email not null");
+         }     
+    }
+    catch(e){
+        console.log(e);
+    }
+  
+  }
+  createDate()
+  })
+  .catch((e) => {
+    console.log('ERROR DATABASE NOT CONNECTED',e);
+  });
 app.listen(PORT,()=>{
   console.log(`Connected`,PORT);
 });

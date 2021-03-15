@@ -1,12 +1,12 @@
 const sequelize = require('sequelize');
 
 const db = new sequelize(
-    "block_chain",
-    "root",
-    "password",
+    "test_7",
+    "admin",
+    "admin1234",
   {
     dialect: 'mysql',
-    host: "localhost",
+    host: "oyesters-db-1.clcmspyxrtn3.ap-south-1.rds.amazonaws.com",
     pool: {
       max: 100,
       min: 0,
@@ -28,12 +28,6 @@ const db = new sequelize(
   }
 );
 
-db.authenticate()
-  .then(() => {
-    console.log('database connected successfully');
-  })
-  .catch((e) => {
-    console.log('ERROR DATABASE NOT CONNECTED',e);
-  });
+
 
 module.exports = { db };
