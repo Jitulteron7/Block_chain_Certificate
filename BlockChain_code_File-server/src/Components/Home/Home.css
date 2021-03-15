@@ -61,7 +61,7 @@
 }
 
 .bottom .progress .determinate{
-    background-color:#c4e22d !important;
+    background-color:#53544a !important;
  
 }
 
@@ -133,7 +133,7 @@
   .input_num{
       width:30%;
   }
-  .down_upload{
+  .Home .down_upload{
       position: relative;
       top: -20px;
   }
