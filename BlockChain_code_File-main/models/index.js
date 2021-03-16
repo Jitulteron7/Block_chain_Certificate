@@ -11,7 +11,7 @@ const Certificates = db.define('certificate', {
   },
   //
   batch_code: {
-    type: DataTypes.INTEGER(255),
+    type: DataTypes.STRING(255),
     allowNull: false,
   },
   staff_name: {
