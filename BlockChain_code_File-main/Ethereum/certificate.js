@@ -10,48 +10,49 @@ const provider = new HDWalletProvider(
   const address = process.env.blockchain_address;
   const abi =[
     {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_uid",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_hash",
+                "type": "string"
+            }
+        ],
+        "name": "addData",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_uid",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_hash",
-          "type": "string"
-        }
-      ],
-      "name": "addData",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
     },
     {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_uid",
-          "type": "string"
-        }
-      ],
-      "name": "viewData",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_uid",
+                "type": "string"
+            }
+        ],
+        "name": "viewData",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     }
-  ]
+]
+
   const web3 = new Web3(provider);
 
 module.exports = new web3.eth.Contract(abi, address)

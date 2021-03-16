@@ -159,6 +159,7 @@ const transporter=nodemailer.createTransport({
     const DataCheck=async (string)=>{
         try{
             let data=await factory.methods.viewData(string).call();
+            console.log(data,"Jitul Teronk bklbdkljbsdfkjgbdfkg");
             return data;
             
         }
@@ -178,6 +179,8 @@ const transporter=nodemailer.createTransport({
             
            let testIs=randomString.generate({length:20});
            
+           console.log(filehash,"My file hash is ");
+
         
         let hh = await factory.methods.addData(
             filehash,/*id */
@@ -284,8 +287,9 @@ const dataExtract= async (file)=>{
 
 
 router.get("/verify/:id",async (req,res)=>{
-    
+
     let check= await  DataCheck(req.params.id);
+    console.log(check,"data hash code ldnjdnfkgndkfgskdfgkjdkfg ");
     let data= await Certificate.findOne({
             where: {certificate_hash:req.params.id}
     })
