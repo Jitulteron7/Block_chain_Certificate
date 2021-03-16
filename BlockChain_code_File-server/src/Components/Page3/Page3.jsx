@@ -12,7 +12,7 @@ const Home =()=>{
     const [file, setFile] = useState(''); 
 
     // all the data state
-    const [batch_code,set_batch_code]=useState();
+    const [batch_code,set_batch_code]=useState("");
     const [batch_trainer,set_batch_trainer]=useState("");
     const [batch_duration,set_batch_start_date]=useState("");
     const [training_title,set_training_title]=useState("");
@@ -189,7 +189,7 @@ const Home =()=>{
                     <div class="row">
                         <div class="input-field col l6 m6 s12">
                         
-                        <input onChange={(e)=>{set_batch_code(e.target.value)}}  id="Batch_Code" type="number" class="validate" placeholder="Batch Code" />
+                        <input onChange={(e)=>{set_batch_code(e.target.value)}}  id="Batch_Code" type="text" class="validate" placeholder="Batch Code" />
                         {/* <label for="Batch_Code">Batch Code</label> */}
                         </div>
                         <div class="input-field col l6 m6 s12">
