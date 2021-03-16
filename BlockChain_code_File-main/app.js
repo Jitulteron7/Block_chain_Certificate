@@ -43,12 +43,15 @@ function getFormattedUrl(req) {
 
 
 db.authenticate()
-  .then(() => {    
-    console.log('database connected successfully');
+  .then((result) => {    
 
+
+
+    console.log("JItul teron data is here ",result);
     const createDate= async()=>{  
     try{
-      
+     
+      // 
         const date=await Email.findOne({
             where:{send_date:moment().format("YYYY-MM-DD")}
           })
@@ -62,22 +65,10 @@ db.authenticate()
   
             console.log("Email not null");
          } 
-         const user=await User.findAll();
-        console.log(user,"empty");
-
-      if(user.length==0){
-        console.log("empty",user);
-        const userIs =await User.create({
-          name:'Abul Shah',
-          phonenumber:"0505177469",
-          email:"abulshah@gmail.com",
-          password:"Welcome@1234",
-          user_type:1
-        })
-        if(userIs){
-          console.log("created",userIs);
-        }
-      }    
+    //  
+  
+      
+      
     }
     catch(e){
         console.log(e,"Error");

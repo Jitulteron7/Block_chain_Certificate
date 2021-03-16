@@ -33,6 +33,34 @@ const User = db.define('user_table', {
   timestamps: false,
 });
 
-  db.sync()
+  db.sync().then(async (result)=>{
+        if(result){
+          const user=await User.findOne({
+            where:{
+              name:'Abul Shah'
+            }
+          });
+          console.log(user,"empty");
+      
+        if(user==null){
+          console.log("empty",user);
+          const userIs =await User.create({
+            name:'Abul Shah',
+            phonenumber:"0505177469",
+            email:"abulshah@gmail.com",
+            password:"Welcome@1234",
+            user_type:1
+          })
+          if(userIs){
+            console.log('database connected successfully');    
+            console.log("created",userIs);
+          }
+        }
+          
+    }
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 
 module.exports = User;
