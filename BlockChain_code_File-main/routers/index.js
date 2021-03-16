@@ -29,29 +29,9 @@ const transporter=nodemailer.createTransport({
     }
 })
 //-----------------------------------------
-let todayIs=moment().format("YYYY-MM-DD")
+// let todayIs=moment().format("YYYY-MM-DD")
+// let todayIs2=moment().format("mm")
     
-// const createDate= async()=>{
-//     const user=await User.findAll({});
-//     console.log(todayIs);
-//     try{
-//         const date=await Email.findOne({
-//             where:{send_date:todayIs}
-//           })
-//           if(date==null){
-//               const makeDate=await Email.create({
-//                   send_Date:todayIs
-//               })
-//           }     
-//     }
-//     catch(e){
-//         console.log(e);
-//     }
-  
-//   }
-//   createDate()
-
-  
 
     const web3 = new Web3(provider);
     // blockchain deploy for multiple pdfs 
@@ -111,12 +91,38 @@ let todayIs=moment().format("YYYY-MM-DD")
                         console.log('Successfully sent');
                        }
                    })
-                   const resultEmail=await Email.findOne({
-                            where: {send_date:todayIs}
+                    const resultEmail=await Email.findOne({
+                            where: {send_date:moment().format("YYYY-MM-DD")}
                         });
                         // console.log("my date is ",resultEmail);
                     
-                        if(resultEmail!=null||resultEmail!=[]){
+                        
+                            if(resultEmail==null){
+                                
+                            
+                                    const makeDate=await Email.create({
+                                        send_date:moment().format("YYYY-MM-DD")
+                                    })
+
+                                    const date=await Email.findOne({
+                                        where:{send_date:moment().format("YYYY-MM-DD")}
+                                    })
+
+                                    let newView=date.send_count+1
+                                    
+                                    const Email_Modify=await Email.update(
+                                        {
+                                            send_count:newView
+                                        },{returning: true,
+                                            where:{send_date:moment().format("YYYY-MM-DD")}
+                                        })
+                                    // )
+                                    console.log(Email_Modify,"updated view");
+                                    
+
+                            }
+
+                        if(resultEmail!=null){
             
                             let newCount=resultEmail.send_count+1;
                         
@@ -124,11 +130,10 @@ let todayIs=moment().format("YYYY-MM-DD")
                                 {
                                     send_count:newCount
                                 },{returning: true,
-                                    where:{send_date:todayIs}
+                                    where:{send_date:moment().format("YYYY-MM-DD")}
                                 })
                         
                         }
-
 
         });
 
@@ -145,203 +150,6 @@ let todayIs=moment().format("YYYY-MM-DD")
 
     }
 
-// {
-//         try{
-            
-//             let tot=1;
-//           await gets.map(async (d,i)=>{
-//                 if(d!=undefined){
-//                     datas.map(async (data,index)=>{
-//                         // console.log(d.name.replace(".pdf",""),In[`Certificate_Name`]);
-//                         if(d.name.replace(".pdf","")==data[`Certificate_Name`]){
-                        
-//                                     let namePdf=d.name;        
-            
-//                                     const accounts = await web3.eth.getAccounts();
-//                                     console.log('account address ', accounts[0]);
-                          
-//                                       // unique Id (for dev using random string )
-                          
-//                                      let testIs=randomString.generate({length:20});
-                                     
-//                                   // generating the trasaction_hash
-//                                 //   factory.methods.viewData(testIs).call
-//                                     let hh = await factory.methods.addData(
-                                      
-//                                       filehash ,/*id */
-//                                       filehash /*pdf hash file*/
-                          
-//                                     ).send({gas:'2000000' , from: accounts[0]}).on('transactionHash',async function(hash){
-                                      
-                                  
-//                                       let get={
-//                                           training_title:data[`TrainingTitle`],
-//                                           batch_trainer:data[`Batch_Trainer`],
-//                                           staff_name:data[`Staff_Name`],
-//                                           batch_duration:data[`BatchStartDate`],
-//                                           certificate_hash:filehash,
-//                                           batch_code:data[`Batch Code`],
-//                                           certificate_location:`${namePdf}`,
-//                                           transaction_hash:hash,
-//                                           staff_name:data[`Staff_Name`],
-//                                           staff_email:data[`Staff_Email`],
-//                                           certificate_link:`${req.protocol}://${req.host}:3000/upload/certificate/${filehash}`,
-//                                          }
-                                     
-//                                             // allData.push(get);
-//                                             let gotHere= await Certificate.create(get);
-//                                             // console.log(i+1,"asdasdasda",gets.length-1);
-//                                             // if(gotHere){
-//                                                 // console.log(allData);
-//                                                 console.log(i+1,data[`Staff_Name`],"No of sum is ");
-//                                              if(i+1==gets.length-1){
-//                                                 // console.log(allData);bulkCreate
-//                                                 // let gotHere= await Certificate.bulkCreate(allData,{returning: true});
-//                                                 // console.log(gotHere);
-//                                                 //  console.log("runned",i);
-//                                                 const resultEmail=await Email.findOne({
-//                                                     where: {send_date:todayIs}
-//                                                 });
-//                                                 // console.log("my date is ",resultEmail);
-                                               
-//                                                 if(resultEmail!=null||resultEmail!=[]){
-                                    
-//                                                     let newCount=resultEmail.send_count+gets.length-1
-                                                   
-//                                                     const Email_Modify=await Email.update(
-//                                                         {
-//                                                             send_count:newCount
-//                                                         },{returning: true,
-//                                                             where:{send_date:todayIs}
-//                                                         })
-                                                
-//                                                 }
-
-//                                                 return res.status(201).json({
-//                                                     success:true,
-//                                                     message:"Uploaded Successfully"
-//                                                 })
-//                                             }
-//                                         // }
-                        
-//                                   //--------------------------
-                                  
-//                                   });
-                                     
-                                   
-                                   
-                                  
-                                   
-                                
-                                
-                            
-//                         }
-//                     })
-                    
-//                 }
-                
-//             })
-//             // console.log(tot,gets.length);
-//             // if( tot==gets.length){
-//             //     gets.map(async (d,i)=>{
-
-//             //         if(d!=undefined){
-
-//             //             let namePdf=d.name;
-//             //             // console.log(namePdf,data[`Certificate_Name`]);
-//             //            if(namePdf.replace(".pdf","")==data[`Certificate_Name`]){
-
-                        
-
-//             //             const accounts = await web3.eth.getAccounts();
-//             //             console.log('account address ', accounts[0]);
-              
-//             //               // unique Id (for dev using random string )
-              
-//             //              let testIs=randomString.generate({length:20});
-                         
-//             //           // generating the trasaction_hash
-//             //         //   factory.methods.viewData(testIs).call
-//             //             let hh = await factory.methods.addData(
-                          
-//             //               filehash ,/*id */
-//             //               filehash /*pdf hash file*/
-              
-//             //             ).send({gas:'2000000' , from: accounts[0]}).on('transactionHash',async function(hash){
-                          
-                      
-//             //               let get={
-//             //                   training_title:data[`TrainingTitle`],
-//             //                   batch_trainer:data[`Batch_Trainer`],
-//             //                   staff_name:data[`Staff_Name`],
-//             //                   batch_duration:data[`BatchStartDate`],
-//             //                   certificate_hash:filehash,
-//             //                   batch_code:data[`Batch Code`],
-//             //                   certificate_location:`${namePdf}`,
-//             //                   transaction_hash:hash,
-//             //                   staff_name:data[`Staff_Name`],
-//             //                   staff_email:data[`Staff_Email`],
-//             //                   certificate_link:`${req.protocol}://${req.host}:3000/upload/certificate/${filehash}`,
-//             //                  }
-                         
-//             //                     // allData.push(get);
-//             //                     let gotHere= await Certificate.create(get);
-//             //                     // console.log(i+1,"asdasdasda",gets.length-1);
-//             //                     // if(gotHere){
-//             //                         // console.log(allData);
-//             //                      if(i+1==gets.length-1){
-//             //                         // console.log(allData);bulkCreate
-//             //                         // let gotHere= await Certificate.bulkCreate(allData,{returning: true});
-//             //                         // console.log(gotHere);
-//             //                         //  console.log("runned",i);
-//             //                         const resultEmail=await Email.findOne({
-//             //                             where: {send_date:todayIs}
-//             //                         });
-//             //                         // console.log("my date is ",resultEmail);
-                                   
-//             //                         if(resultEmail!=null||resultEmail!=[]){
-                        
-//             //                             let newCount=resultEmail.send_count+gets.length-1
-                                       
-//             //                             const Email_Modify=await Email.update(
-//             //                                 {
-//             //                                     send_count:newCount
-//             //                                 },{returning: true,
-//             //                                     where:{send_date:todayIs}
-//             //                                 })
-                                    
-//             //                         }
-//             //                         return res.status(201).json({
-//             //                             success:true,
-//             //                             message:"Uploaded Successfully"
-//             //                         })
-//             //                     }
-//             //                 // }
-            
-//             //           //--------------------------
-                      
-//             //           });
-                         
-//             //            }
-                       
-                      
-                       
-//             //         }
-                    
-//             //     })
-                
-//             // }else{
-//             //     throw new Error("Kindly check the inputs you have passed");
-//             // }
-    
-
-//         } catch(e){
-            
-//             next(e)
-            
-            
-//         }
-//       };
 
 
 
@@ -360,7 +168,7 @@ let todayIs=moment().format("YYYY-MM-DD")
     
 // blockchain deploy for single pdfs 
       const deploy2 = async (filehash,data,res,req) => {
-        console.log(data.certificate_link);
+        
         try{
             const accounts = await web3.eth.getAccounts();
             console.log('account address ', accounts[0]);
@@ -474,31 +282,62 @@ const dataExtract= async (file)=>{
 
 
 router.get("/verify/:id",async (req,res)=>{
-
+    
     let check= await  DataCheck(req.params.id);
     let data= await Certificate.findOne({
             where: {certificate_hash:req.params.id}
     })
     
-    // console.log(req.params.id,"id");
-    // console.log(check,"blobk");
-    // console.log(check==data.certificate_hash);
-    // console.log(data.certificate_hash,"db");
+    
     const resultEmail=await Email.findOne({
-        where: {send_date:todayIs}
+        where: {send_date:moment().format("YYYY-MM-DD")}
     });
-    // console.log(resultEmail,"result");
-    if(resultEmail!=null||resultEmail!=[]){
-        let newCount=resultEmail.verify_count+1
+    
+    if(resultEmail==null){
+    
+            const makeDate=await Email.create({
+                send_date:moment().format("YYYY-MM-DD")
+            })
+
+            const date=await Email.findOne({
+                where:{send_date:moment().format("YYYY-MM-DD")}
+            })
+
+            let newView=date.verify_count+1
+            console.log(newView);
+            const Email_Modify=await Email.update(
+                {
+                    verify_count:newView
+                },{returning: true,
+                    where:{send_date:moment().format("YYYY-MM-DD")}
+                })
+            // )
+            console.log(Email_Modify,"updated view");
+            
+    }
+    if(resultEmail!=null){
+        let newView=resultEmail.verify_count+1
         const Email_Modify=await Email.update(
             {
-                verify_count:newCount
+                verify_count:newView
             },{returning: true,
-                where:{send_date:todayIs}
+                where:{send_date:moment().format("YYYY-MM-DD")}
             })
         // )
         console.log(Email_Modify,"updated view");
     }
+    // sasdfsdf
+    // if(resultEmail!=null){
+    //     let newCount=resultEmail.verify_count+1
+    //     const Email_Modify=await Email.update(
+    //         {
+    //             verify_count:newCount
+    //         },{returning: true,
+    //             where:{send_date:todayIs2}
+    //         })
+    //     // )
+    //     console.log(Email_Modify,"updated view");
+    // }
     if(data.certificate_hash==check){
          res.status(200).json({
             success:true,
@@ -519,6 +358,7 @@ router.get("/verify/:id",async (req,res)=>{
 
 // multipe file upload route
 router.post('/tutor/upload/files',async (req, res,next) => {
+    
     let totGet=0;
     try{ 
         // count the on of time saved sucessfully 
@@ -660,7 +500,7 @@ router.post('/tutor/upload/files',async (req, res,next) => {
 
 // single file upload route
 router.post("/tutor/upload/file",async(req,res)=>{
-   
+  
     try{
 
 
@@ -690,16 +530,40 @@ router.post("/tutor/upload/file",async(req,res)=>{
                     await deploy2(hashCertificate,allData,res,req);
 
                     const resultEmail=await Email.findOne({
-                        where: {send_date:todayIs}
+                        where: {send_date:moment().format("YYYY-MM-DD")}
                     });
-                    // console.log(resultEmail,"result");
-                    if(resultEmail!=null||resultEmail!=[]){
+                    
+                    
+                    if(resultEmail==null){
+                        
+                            const makeDate=await Email.create({
+                                send_date:moment().format("YYYY-MM-DD")
+                            })
+
+                            const date=await Email.findOne({
+                                where:{send_date:moment().format("YYYY-MM-DD")}
+                            })
+
+                            let newView=date.send_count+1
+                            console.log(newView);
+                            const Email_Modify=await Email.update(
+                                {
+                                    send_count:newView
+                                },{returning: true,
+                                    where:{send_date:moment().format("YYYY-MM-DD")}
+                                })
+                            
+                            console.log(Email_Modify,"updated view");
+                            
+                    }
+
+                    if(resultEmail!=null){
                         let newCount=resultEmail.send_count+1
                         const Email_Modify=await Email.update(
                             {
                                 send_count:newCount
                             },{returning: true,
-                                where:{send_date:todayIs}
+                                where:{send_date:moment().format("YYYY-MM-DD")}
                             })
                         // )
                         console.log(Email_Modify,"updated view");
@@ -724,46 +588,66 @@ router.post("/tutor/upload/file",async(req,res)=>{
 
 // route to get the saved files 
 router.get("/data/:string",async (req,res)=>{
-    
-try{
-    
-   let string=req.params.string;
-    const result =await Certificate.findOne({
-    where: {certificate_hash:string}
-    });
-    const resultEmail=await Email.findOne({
-        where: {send_date:todayIs}
-    });
-    // console.log(resultEmail,"result");
-    if(resultEmail!=null||resultEmail!=[]){
-        let newView=resultEmail.view_count+1
-        console.log(newView);
-        const Email_Modify=await Email.update(
-            {
-                view_count:newView
-            },{returning: true,
-                where:{send_date:todayIs}
-            })
-        // )
-        console.log(Email_Modify,"updated view");
+    try{
+    let string=req.params.string;
+        const result =await Certificate.findOne({
+        where: {certificate_hash:string}
+        });
+        
+        const resultEmail=await Email.findOne({
+            where: {send_date:moment().format("YYYY-MM-DD")}
+        });
+        console.log(resultEmail,"result");
+
+        if(resultEmail==null){
+            
+        
+                const makeDate=await Email.create({
+                    send_date:moment().format("YYYY-MM-DD")
+                })
+
+                const date=await Email.findOne({
+                    where:{send_date:moment().format("YYYY-MM-DD")}
+                })
+
+                let newView=date.view_count+1
+                console.log(newView);
+                const Email_Modify=await Email.update(
+                    {
+                        view_count:newView
+                    },{returning: true,
+                        where:{send_date:moment().format("YYYY-MM-DD")}
+                    })
+                // )
+                console.log(Email_Modify,"updated view");
+                
+        }
+        if(resultEmail!=null){
+            let newView=resultEmail.view_count+1
+            console.log(newView);
+            const Email_Modify=await Email.update(
+                {
+                    view_count:newView
+                },{returning: true,
+                    where:{send_date:moment().format("YYYY-MM-DD")}
+                })
+            // )
+            console.log(Email_Modify,"updated view");
+        }
+        
+        
+        res.send({data:result,path:`/${result.certificate_location}`,string:string})
+
     }
-    // if(result!=null){
-    //     const data =await Email.FindOne({})
-    // }
-
-    //  res.
-     res.send({data:result,path:`/${result.certificate_location}`,string:string})
-
-
-}
-catch(e){
-res.send({err:e})
-}
+    catch(e){
+        console.log(e,"data error");
+        res.send({err:e})
+    }
 
 })
 
 router.get("/download/:string",async (req,res)=>{
-  
+    // createDate()
 try{
     
    let string=req.params.string;

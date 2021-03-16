@@ -46,54 +46,24 @@ function getFormattedUrl(req) {
 // })
 
 
-// let todayIs=moment().format("YYYY-MM-DD")
-// const createDate= async()=>{
-  
-//   console.log(todayIs);
-//   try{
-//       const date=await Email.findOne({
-//           where:{send_date:todayIs}
-//         })
-//         console.log("data email is what sdf ",date);
-//         if(date==null){
-//             const makeDate=await Email.create({
-//                 send_Date:todayIs
-//             })
-//             if(makeDate){
 
-//                app.listen(PORT,()=>{
-//                 console.log(`Connected`,PORT);
-//               })
-//             }
-//             console.log("Date he onfsdnkfjsndfjn ;lknsd;lfna k asdfjsn k");
-//         }else{
-
-           
-//       }     
-//   }
-//   catch(e){
-//       console.log(e);
-//   }
-
-// }
-// createDate()
 db.authenticate()
   .then(() => {
     
     console.log('database connected successfully');
 
-     let todayIs=moment().format("YYYY-MM-DD")
-  const createDate= async()=>{
-    
+     
+    const createDate= async()=>{
+      
    
     try{
         const date=await Email.findOne({
-            where:{send_date:todayIs}
+            where:{send_date:moment().format("YYYY-MM-DD")}
           })
-          console.log("data email is what sdf ",date);
+
           if(date==null){
               const makeDate=await Email.create({
-                  send_Date:todayIs
+                  send_Date:moment().format("YYYY-MM-DD")
               })
               
           }else{
@@ -105,8 +75,9 @@ db.authenticate()
         console.log(e);
     }
   
-  }
-  createDate()
+    }
+  createDate();
+
   })
   .catch((e) => {
     console.log('ERROR DATABASE NOT CONNECTED',e);

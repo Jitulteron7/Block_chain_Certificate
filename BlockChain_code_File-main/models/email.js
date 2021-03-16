@@ -2,6 +2,7 @@
 const { DataTypes } = require('sequelize');
 const {db}=require("../db/sql");
 const moment =require("moment")
+// let time=moment().format('mm')
 const Email = db.define('email_table', {
   send_id: {
     type: DataTypes.INTEGER(255),
@@ -27,7 +28,7 @@ const Email = db.define('email_table', {
   send_date: {
     type: DataTypes.STRING(255),
     allowNull: false,
-    defaultValue:moment().format('YYYY-MM-DD')
+    defaultValue:moment().format("YYYY-MM-DD")
   },
 });
 
