@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const express=require("express");
 const app=express();
 const path=require("path");
@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const moment =require("moment");
 const Email =require("./models/email");
 const {db}=require("./db/sql");
+const User =require("./models/user");
 app.use(morgan('dev'));
 const os =require("os");
 require("./db/sql");
@@ -40,23 +41,14 @@ function getFormattedUrl(req) {
     return {protocol:req.protocol,host:req.host}
 }
 
-// app.get("/getnow",(req,res)=>{
-//   console.log(getFormattedUrl(req));
-//   res.send(getFormattedUrl(req))
-// })
-
-
 
 db.authenticate()
-  .then(() => {
-    
+  .then(() => {    
     console.log('database connected successfully');
 
-     
-    const createDate= async()=>{
-      
-   
+    const createDate= async()=>{  
     try{
+      
         const date=await Email.findOne({
             where:{send_date:moment().format("YYYY-MM-DD")}
           })
@@ -69,15 +61,30 @@ db.authenticate()
           }else{
   
             console.log("Email not null");
-         }     
+         } 
+         const user=await User.findAll();
+        console.log(user,"empty");
+
+      if(user.length==0){
+        console.log("empty",user);
+        const userIs =await User.create({
+          name:'Abul Shah',
+          phonenumber:"0505177469",
+          email:"abulshah@gmail.com",
+          password:"Welcome@1234",
+          user_type:1
+        })
+        if(userIs){
+          console.log("created",userIs);
+        }
+      }    
     }
     catch(e){
-        console.log(e);
+        console.log(e,"Error");
     }
   
     }
-  createDate();
-
+  createDate()
   })
   .catch((e) => {
     console.log('ERROR DATABASE NOT CONNECTED',e);

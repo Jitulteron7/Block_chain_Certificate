@@ -3,11 +3,11 @@ const Web3 = require('web3');
 const Certificate = require('./build/Certificate.json');
 
 const provider = new HDWalletProvider(
-  'frame apart post kick armed refuse limb armed annual jaguar apart cliff' ,
+  process.env.blockchain_provider,
   'https://rinkeby.infura.io/v3/91ae8105018647e7a5302040d40ede18'
   );
 
-  const address = '0x0E3BA9eA5D221B395EC6957E0Eb59C08573b56E3';
+  const address = process.env.blockchain_address;
   const abi =[
     {
       "inputs": [],

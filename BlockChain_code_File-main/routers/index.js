@@ -1,3 +1,4 @@
+require("dotenv").config()
 const router=require("express").Router();
 const XLSX =require("xlsx");
 const {db}=require("../db/sql");
@@ -12,7 +13,7 @@ const Web3 = require('web3');
 const factory = require('../Ethereum/certificate') ;
 const moment=require("moment")
 const provider = new HDWalletProvider(
-    'frame apart post kick armed refuse limb armed annual jaguar apart cliff',
+    process.env.blockchain_provider,
     'https://rinkeby.infura.io/v3/1ec6558c6dba4a9db1ab5f5b647d9a60'
     );
 //-----------------------------------------
@@ -20,14 +21,15 @@ const provider = new HDWalletProvider(
 const nodemailer=require("nodemailer");
 const sendgridTransport=require("nodemailer-sendgrid-transport");
 const transporter=nodemailer.createTransport({
-    host: "mail.oyesters.in",
+    host: process.env.email_host,
     port: 465,
     secure: true,
     auth: {
-    user: "oyesters_training@oyesters.in",
-    pass: "Oyesters@1234"
+    user: process.env.email_user,
+    pass: process.env.email_pass
     }
 })
+
 //-----------------------------------------
 // let todayIs=moment().format("YYYY-MM-DD")
 // let todayIs2=moment().format("mm")
@@ -70,7 +72,7 @@ const transporter=nodemailer.createTransport({
                    gotHere= await Certificate.create(get);
                 //    email section
                 var mailOptions = {
-                    from: '"Example Team" <oyesters_training@oyesters.in>',
+                    from: `"${process.env.email_team_name}" <${process.env.email_user}>`,
                     to:data[`Staff_Email`],
                     subject: 'Test Email',
                     html:`<p>
@@ -80,7 +82,7 @@ const transporter=nodemailer.createTransport({
                         id: 'some random message specific id',
                         return: 'headers',
                         notify: ['failure', 'delay'],
-                        recipient: 'oyesters_training@oyesters.in'
+                        recipient:data[`Staff_Email`]
                     },
                 }; 
                    transporter.sendMail(mailOptions,(err,info)=>{

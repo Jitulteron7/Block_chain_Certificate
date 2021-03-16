@@ -25,7 +25,7 @@ const User = db.define('user_table', {
     allowNull: false,
   },
   user_type:{
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER(255),
     allowNull:false,
     defaultValue:0
   }	
